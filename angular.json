@@ -29,7 +29,8 @@
                         "styles": [
                             "src/styles.scss"
                         ],
-                        "scripts": []
+                        "scripts": [],
+                        "showCircularDependencies": false
                     },
                     "configurations": {
                         "production": {
@@ -48,6 +49,18 @@
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true
+                        },
+                        "ec": {
+                            "sourceMap": true,
+                            "extractCss": true
+                        },
+                        "hmr": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.hmr.ts"
+                                }
+                            ]
                         }
                     }
                 },
@@ -62,12 +75,10 @@
                         },
                         "hmr": {
                             "hmr": true,
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.hmr.ts"
-                                }
-                            ]
+                            "browserTarget": "fuse:build:hmr"
+                        },
+                        "ec": {
+                            "browserTarget": "fuse:build:ec"
                         }
                     }
                 },
